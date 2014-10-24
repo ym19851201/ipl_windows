@@ -16,25 +16,20 @@ end
 
 users = Chef::EncryptedDataBagItem.load('account_data', 'accounts')['users']
 
-# node["web_server"]["members"].each do |k, v|
 users.each do |usr|
 
   # create personal directory in FTP root directory
-#   directory "C:\\inetpub\\ftproot\\Inside\\#{k.to_s}" do
   directory "C:\\inetpub\\ftproot\\Inside\\#{usr['name']}" do
 
     action [:create]
-#     rights :modify, k.to_s
     rights :modify, usr['name']
 
   end
 
   # create personal directory in Users directory
-#   directory "C:\\inetpub\\Users\\#{k.to_s}" do
   directory "C:\\inetpub\\Users\\#{usr['name']}" do
 
     action [:create]
-#     rights :modify, k.to_s
     rights :modify, usr['name']
 
   end
