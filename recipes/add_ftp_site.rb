@@ -21,7 +21,7 @@ end
 %w{Bbs bbs_dev keiba Web ftproot\\Outside}.each do |dir|
   powershell_script 'add vdir to FTP site' do
     not_if do
-      `#{appcmd} list site "IPL FTP" /config` =~ /physicalPath="C:\\inetpub\\#{dir}"/
+      `#{appcmd} list site "IPL FTP" /config`.include? "physicalPath=\"C:\\inetpub\\#{dir}\""
     end
     if dir =~ /Outside/
       dir_name = "outside"
