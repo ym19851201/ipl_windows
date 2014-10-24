@@ -2,3 +2,8 @@ definitions/
 files/
 templates/
 *.swp
+attributes/**/*
+files/**/*
+providers/**/*
+libraries/**/*
+resources/**/*
