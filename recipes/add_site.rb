@@ -1,3 +1,5 @@
+include_recipe "ipl_windows::add_site"
+
 appcmd = "#{node['iis']['home']}\\appcmd"
 
 # Transfer directories to guest machine

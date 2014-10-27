@@ -1,3 +1,7 @@
+include_recipe "ipl_windows::add_ftp_site"
+include_recipe "ipl_windows::add_user"
+include_recipe "ipl_windows::create_dir"
+
 appcmd = "#{node['iis']['home']}\\appcmd"
 
 powershell_script 'modify ssl settings' do

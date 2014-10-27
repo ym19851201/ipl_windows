@@ -1,3 +1,6 @@
+include_recipe "ipl_windows::add_ftp_site"
+include_recipe "ipl_windows::add_user"
+
 appcmd = "#{node['iis']['home']}\\appcmd"
 
 # add ACL rights to Users group
