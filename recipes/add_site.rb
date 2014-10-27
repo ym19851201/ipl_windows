@@ -1,4 +1,4 @@
-include_recipe "ipl_windows::add_site"
+include_recipe "ipl_windows::mod_asp"
 
 appcmd = "#{node['iis']['home']}\\appcmd"
 
