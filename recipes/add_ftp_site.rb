@@ -1,4 +1,4 @@
-appcmd = "#{node['ipl_iis']['home']}\\appcmd"
+appcmd = "#{node['iis']['home']}\\appcmd"
 
 powershell_script 'add FTP site' do
   not_if do
