@@ -1,5 +1,5 @@
-include_recipe "ipl_iis"
-include_recipe "ipl_iis::mod_isapi"
+include_recipe "iis"
+include_recipe "iis::mod_isapi"
 
 features = %w{IIS-ASP}
 
