@@ -9,7 +9,7 @@
 
   },
   "dependencies": {
-    "iis": ">= 0.0.0"
+    "iis": ">= 2.1.0"
   },
   "recommendations": {
 
