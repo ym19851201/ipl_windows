@@ -1,23 +1,25 @@
 include_recipe "ipl_windows::mod_asp"
+include_recipe "ipl_windows::transfer_dirs"
+include_recipe "ipl_windows::mod_default_doc"
 
 appcmd = "#{node['iis']['home']}\\appcmd"
 
 # Transfer directories to guest machine
-%w{Bbs UserAdd Users Web bbs_dev keiba}.each do |dir|
-  remote_directory "C:\\inetpub\\#{dir}" do
-    source dir
-    rights :read_execute, "IIS_IUSRS"
-  end
-end
+# %w{Bbs UserAdd Users Web bbs_dev keiba}.each do |dir|
+#   remote_directory "C:\\inetpub\\#{dir}" do
+#     source dir
+#     rights :read_execute, "IIS_IUSRS"
+#   end
+# end
 
 # Transfer DB directory to guest machine
-%w{mdb_data}.each do |dir|
-  remote_directory "C:\\inetpub\\#{dir}" do
-    source dir
-    rights :full_control, "IIS_IUSRS"
-    rights :full_control, "Users"
-  end
-end
+# %w{mdb_data}.each do |dir|
+#   remote_directory "C:\\inetpub\\#{dir}" do
+#     source dir
+#     rights :full_control, "IIS_IUSRS"
+#     rights :full_control, "Users"
+#   end
+# end
 
 %w{Web keiba}.each_with_index do |name, i|
   iis_site "C:\\inetpub\\#{name}" do
@@ -47,9 +49,9 @@ end
   end
 end
 
-powershell_script "add index.asp as defaultDocument" do
-  not_if do
-    `#{appcmd} list config /section:defaultDocument` =~ /index\.asp/
-  end
-  code "#{appcmd} set config \/section:defaultDocument \"\/+files.[value='index.asp']\""
-end
+# powershell_script "add index.asp as defaultDocument" do
+#   not_if do
+#     `#{appcmd} list config /section:defaultDocument` =~ /index\.asp/
+#   end
+#   code "#{appcmd} set config \/section:defaultDocument \"\/+files.[value='index.asp']\""
+# end
