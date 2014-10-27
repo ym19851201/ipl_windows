@@ -1,4 +1,4 @@
-appcmd = "#{node['iis']['home']}\\appcmd"
+appcmd = "#{node['ipl_iis']['home']}\\appcmd"
 
 # Transfer directories to guest machine
 %w{Bbs UserAdd Users Web bbs_dev keiba}.each do |dir|
@@ -18,16 +18,18 @@ end
 end
 
 %w{Web keiba}.each_with_index do |name, i|
-  iis_site "C:\\inetpub\\#{name}" do
+  ipl_iis_site "C:\\inetpub\\#{name}" do
     action [:add, :start, :config, :restart]
     site_name name.upcase
     path "C:\\inetpub\\#{name}"
+    # tmp
     port ('80' * (i + 1)).to_i
+#     notifies :restart "ipl_iis_site[#{name}]"
   end
 end
 
 %w{Bbs UserAdd bbs_dev}.each do |name|
-  iis_app name do
+  ipl_iis_app name do
     if name == "UserAdd"
       url = "/#{name}"
     else

@@ -1,4 +1,4 @@
-appcmd = "#{node['iis']['home']}\\appcmd"
+appcmd = "#{node['ipl_iis']['home']}\\appcmd"
 
 powershell_script 'modify ssl settings' do
   not_if do

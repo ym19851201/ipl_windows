@@ -1,4 +1,4 @@
-appcmd = "#{node['iis']['home']}\\appcmd"
+appcmd = "#{node['ipl_iis']['home']}\\appcmd"
 
 # add ACL rights to Users group
 directory 'C:\inetpub\ftproot' do
