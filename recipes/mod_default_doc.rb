@@ -1,3 +1,5 @@
+appcmd = "#{node['iis']['home']}\\appcmd"
+
 powershell_script "add index.asp as defaultDocument" do
   not_if do
     `#{appcmd} list config /section:defaultDocument` =~ /index\.asp/
