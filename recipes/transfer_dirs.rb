@@ -12,5 +12,6 @@ end
     source dir
     rights :full_control, "IIS_IUSRS"
     rights :full_control, "Users"
+    overwrite false
   end
 end
